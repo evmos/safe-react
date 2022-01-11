@@ -28,14 +28,13 @@ import { PayableTx } from 'src/types/contracts/types'
 import { updateTransactionStatus } from 'src/logic/safe/store/actions/updateTransactionStatus'
 import { Confirmation } from 'src/logic/safe/store/models/types/confirmation'
 import { Operation } from '@gnosis.pm/safe-react-gateway-sdk'
-import { isTxPendingError } from 'src/logic/wallets/getWeb3'
 import { Errors, logError } from 'src/logic/exceptions/CodedException'
-import { getContractErrorMessage } from 'src/logic/contracts/safeContractErrors'
 import { onboardUser } from 'src/components/ConnectButton'
 import { getGasParam } from '../../transactions/gas'
 import { getLastTransaction } from '../selectors/gatewayTransactions'
 import { getRecommendedNonce } from '../../api/fetchSafeTxGasEstimation'
 import { LocalTransactionStatus } from '../models/types/gateway.d'
+import { isTxPendingError } from 'src/logic/wallets/getWeb3'
 
 interface ProcessTransactionArgs {
   approveAndExecute: boolean
@@ -161,17 +160,15 @@ export const processTransaction =
 
           if (isExecution) {
             dispatch(updateTransactionStatus({ safeTxHash: tx.safeTxHash, status: LocalTransactionStatus.PENDING }))
+            aboutToExecuteTx.setNonce(txArgs.nonce)
           }
 
-          try {
-            await saveTxToHistory({ ...txArgs })
-
-            // store the pending transaction's nonce
-            isExecution && aboutToExecuteTx.setNonce(txArgs.nonce)
-
-            dispatch(fetchTransactions(chainId, safeAddress))
-          } catch (e) {
-            logError(Errors._804, e.message)
+          if (!isExecution) {
+            try {
+              await saveTxToHistory({ ...txArgs })
+            } catch (e) {
+              logError(Errors._804, e.message)
+            }
           }
         })
         .then(async (receipt) => {
@@ -192,24 +189,11 @@ export const processTransaction =
         dispatch(updateTransactionStatus({ safeTxHash: tx.safeTxHash, status: LocalTransactionStatus.PENDING_FAILED }))
       }
 
-      const executeData = safeInstance.methods.approveHash(txHash || '').encodeABI()
-      const contractErrorMessage = await getContractErrorMessage({
-        safeInstance,
-        from,
-        data: executeData,
-      })
-
-      if (contractErrorMessage) {
-        logError(Errors._804, contractErrorMessage)
-      }
-
       const notification = isTxPendingError(err)
         ? NOTIFICATIONS.TX_PENDING_MSG
         : {
             ...notificationsQueue.afterExecutionError,
-            ...(contractErrorMessage && {
-              message: `${notificationsQueue.afterExecutionError.message} - ${contractErrorMessage}`,
-            }),
+            message: `${notificationsQueue.afterExecutionError.message} - ${err.message}`,
           }
 
       dispatch(enqueueSnackbar({ key: err.code, ...notification }))
