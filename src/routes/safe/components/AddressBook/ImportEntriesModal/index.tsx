@@ -7,7 +7,6 @@ import { CSVReader } from 'react-papaparse'
 import { ParseResult } from 'papaparse'
 import { AddressBookEntry } from 'src/logic/addressBook/model/addressBook'
 import { checksumAddress } from 'src/utils/checksumAddress'
-import HelpInfo from 'src/routes/safe/components/AddressBook/HelpInfo'
 import { validateCsvData, validateFile } from 'src/routes/safe/components/AddressBook/utils'
 import { ChainId } from 'src/config/chain.d'
 import { trackEvent } from 'src/utils/googleTagManager'
@@ -165,8 +164,7 @@ const ImportEntriesModal = ({ importEntryModalHandler, isOpen, onClose }: Import
           )}
           {!csvLoaded && importError === '' && (
             <Text color="text" as="p" size="xl">
-              Only CSV files exported from Gnosis Safe are allowed. <br />
-              <HelpInfo />
+              Only CSV files exported from Evmos Safe are allowed. <br />
             </Text>
           )}
           {csvLoaded && importError === '' && (
