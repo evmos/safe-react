@@ -1,3 +1,12 @@
 {
-  "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "the-amazing-ultraton",
+      "id": 106994129,
+      "comment_id": 1199623322,
+      "created_at": "2022-07-29T16:04:05Z",
+      "repoId": 445311204,
+      "pullRequestNo": 1
+    }
+  ]
 }
