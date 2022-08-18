@@ -395,6 +395,8 @@ export const TxDetailsContainer = styled.div`
   }
 
   .tx-details {
+    position: relative;
+
     &.not-executed {
       grid-row-end: span 2;
     }
@@ -481,7 +483,7 @@ export const StyledScrollableBar = styled.div`
 `
 
 export const ScrollableTransactionsContainer = styled(StyledScrollableBar)`
-  height: calc(100vh - 170px);
+  height: calc(100vh - 218px);
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;

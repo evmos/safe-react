@@ -84,6 +84,9 @@ describe('Advanced Settings Component', () => {
             },
           },
         },
+        currentSession: {
+          currentSafeAddress: safeAddress,
+        },
       }
 
       render(<Advanced />, customState)
@@ -138,6 +141,9 @@ describe('Advanced Settings Component', () => {
             },
           },
         },
+        currentSession: {
+          currentSafeAddress: safeAddress,
+        },
       }
 
       render(<Advanced />, customState)
@@ -166,6 +172,9 @@ describe('Advanced Settings Component', () => {
               currentVersion: '1.3.0',
             },
           },
+        },
+        currentSession: {
+          currentSafeAddress: safeAddress,
         },
       }
 
@@ -199,6 +208,9 @@ describe('Advanced Settings Component', () => {
               currentVersion: '1.3.0',
             },
           },
+        },
+        currentSession: {
+          currentSafeAddress: safeAddress,
         },
       }
 
@@ -264,6 +276,9 @@ describe('Advanced Settings Component', () => {
             },
           },
         },
+        currentSession: {
+          currentSafeAddress: safeAddress,
+        },
       }
 
       render(<Advanced />, customState)
@@ -295,6 +310,9 @@ describe('Advanced Settings Component', () => {
             },
           },
         },
+        currentSession: {
+          currentSafeAddress: safeAddress,
+        },
       }
 
       render(<Advanced />, customState)
@@ -303,21 +321,6 @@ describe('Advanced Settings Component', () => {
       expect(nonceLabel).toBeInTheDocument()
 
       expect(getByText(nonceLabel, currentNonce)).toBeInTheDocument()
-    })
-  })
-  describe('BatchExecute Setting', () => {
-    it('displays if MultiSend contract exists', () => {
-      jest.spyOn(safeContracts, 'getMultisendContractAddress').mockReturnValue('mockAddress')
-
-      const { getByText } = render(<Advanced />)
-      expect(getByText('Transactions (experimental)')).toBeInTheDocument()
-    })
-
-    it('doesnt display if the MultiSend contract doesnt exist', () => {
-      jest.spyOn(safeContracts, 'getMultisendContractAddress').mockReturnValue('')
-
-      const { queryByText } = render(<Advanced />)
-      expect(queryByText('Transactions (experimental)')).not.toBeInTheDocument()
     })
   })
 })

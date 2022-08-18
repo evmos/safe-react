@@ -13,7 +13,7 @@ import Row from 'src/components/layout/Row'
 import { headerHeight, md, screenSm, sm } from 'src/theme/variables'
 import { useStateHandler } from 'src/logic/hooks/useStateHandler'
 import SafeLogo from '../assets/gnosis-safe-multisig-logo.svg'
-import { WELCOME_ROUTE } from 'src/routes/routes'
+import { ROOT_ROUTE } from 'src/routes/routes'
 import WalletSwitch from 'src/components/WalletSwitch'
 import Divider from 'src/components/layout/Divider'
 import { shouldSwitchWalletChain } from 'src/logic/wallets/store/selectors'
@@ -25,7 +25,7 @@ const styles = () => ({
   root: {
     backgroundColor: 'white',
     borderRadius: sm,
-    boxShadow: '0 0 10px 0 rgba(33, 48, 77, 0.1)',
+    boxShadow: 'rgb(40 54 61 / 18%) 1px 2px 10px 0px',
     marginTop: '11px',
     minWidth: '280px',
     padding: 0,
@@ -98,7 +98,7 @@ const Layout = ({ classes, providerDetails, providerInfo }) => {
     <Row className={classes.summary}>
       <Col className={classes.logo} middle="xs" start="xs">
         <Track {...OVERVIEW_EVENTS.HOME}>
-          <Link to={WELCOME_ROUTE}>
+          <Link to={ROOT_ROUTE}>
             <Img alt="Evmos Safe" height={36} src={SafeLogo} testId="heading-gnosis-logo" id="safe-logo" />
           </Link>
         </Track>
@@ -113,6 +113,7 @@ const Layout = ({ classes, providerDetails, providerInfo }) => {
         </div>
       )}
 
+      <Divider />
       <Provider
         info={providerInfo}
         open={open}
@@ -129,6 +130,7 @@ const Layout = ({ classes, providerDetails, providerInfo }) => {
           )
         }
       />
+      <Divider />
 
       <NetworkSelector open={openNetworks} toggle={toggleNetworks} clickAway={clickAwayNetworks} />
     </Row>
