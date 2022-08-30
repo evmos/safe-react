@@ -53,14 +53,15 @@ export const ActionAccordion = styled(Accordion)`
 `
 
 export const StyledTransactionsGroup = styled.div`
+  box-sizing: border-box;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 16px 0;
-  padding: 0 8px;
-  box-sizing: border-box;
+  margin: 16px 0px;
   width: 100%;
+  padding: 0px 8px;
+  box-sizing: border-box;
 `
 
 export const H2 = styled.h2`
@@ -70,7 +71,7 @@ export const H2 = styled.h2`
 
 export const SubTitle = styled(Text)`
   margin-bottom: 8px;
-
+  margin-left: 2px;
   font-size: 0.76em;
   font-weight: 600;
   line-height: 1.5;
@@ -239,8 +240,8 @@ export const GroupedTransactions = styled(StyledTransaction)`
 
   // builds the tree-view layout
   .tree-lines {
-    height: 100%;
-    margin-left: 30px;
+    height: auto;
+    margin: 0 0 0 30px;
     position: relative;
     width: 30%;
 
@@ -258,7 +259,7 @@ export const GroupedTransactions = styled(StyledTransaction)`
         content: '';
         height: 22px;
         position: absolute;
-        top: 8px;
+        top: 18px;
         width: 100%;
       }
     }
@@ -273,7 +274,7 @@ export const GroupedTransactions = styled(StyledTransaction)`
         border-left: 2px solid ${({ theme }) => theme.colors.separator};
         content: '';
         height: 100%;
-        margin-top: 14px;
+        margin-top: 26px;
         position: absolute;
         width: 100%;
       }

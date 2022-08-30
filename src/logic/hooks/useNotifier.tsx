@@ -5,6 +5,7 @@ import { IconButton } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 
 import { selectNotifications, closeNotification } from 'src/logic/notifications/store/notifications'
+import NotificationLink from 'src/components/AppLayout/Header/components/Notifications/NotificationLink'
 
 let onScreenKeys: SnackbarKey[] = []
 
@@ -15,32 +16,58 @@ const useNotifier = (): void => {
 
   useEffect(() => {
     for (const notification of notifications) {
-      // Unspecified keys are automatically generated in `enqueueSnackbar` thunk
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const key = notification.options!.key!
+      const { key } = notification.options
 
+      // Dismiss notification via Notistack
       if (notification.dismissed) {
         closeSnackbar(key)
         continue
       }
 
+      // Do nothing if notification is already on screen
       if (onScreenKeys.includes(key)) {
         continue
       }
 
-      enqueueSnackbar(notification.message, {
-        ...notification.options,
-        onExited: () => {
-          // Cleanup store/cache when notification has unmounted
-          dispatch(closeNotification({ key }))
-          onScreenKeys = onScreenKeys.filter((onScreenKey) => onScreenKey !== key)
+      // `onExited` runs after a notification unmounts meaning that already
+      // closed notifications would 'close' again, marking them as unread
+      let wasClosed = false
+
+      // Display notification with Notistack
+      enqueueSnackbar(
+        <div>
+          <div>{notification.message}</div>
+          {notification.link && (
+            <NotificationLink
+              {...notification.link}
+              onClick={() => {
+                closeSnackbar(key)
+                wasClosed = true
+              }}
+            />
+          )}
+        </div>,
+        {
+          ...notification.options,
+          onExited: () => {
+            // Cleanup store/cache when notification has unmounted
+            if (!wasClosed) {
+              dispatch(closeNotification({ key, read: false }))
+            }
+            onScreenKeys = onScreenKeys.filter((onScreenKey) => onScreenKey !== key)
+          },
+          action: (
+            <IconButton
+              onClick={() => {
+                dispatch(closeNotification({ key }))
+                wasClosed = true
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          ),
         },
-        action: (
-          <IconButton onClick={() => dispatch(closeNotification({ key }))}>
-            <CloseIcon />
-          </IconButton>
-        ),
-      })
+      )
 
       onScreenKeys = [...onScreenKeys, key]
     }
