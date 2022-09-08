@@ -12,7 +12,6 @@ import Img from 'src/components/layout/Img'
 import Row from 'src/components/layout/Row'
 import { headerHeight, md, screenSm, sm } from 'src/theme/variables'
 import { useStateHandler } from 'src/logic/hooks/useStateHandler'
-import SafeLogo from '../assets/gnosis-safe-multisig-logo.svg'
 import { ROOT_ROUTE } from 'src/routes/routes'
 import WalletSwitch from 'src/components/WalletSwitch'
 import Divider from 'src/components/layout/Divider'
@@ -21,6 +20,7 @@ import { useSelector } from 'react-redux'
 import { OVERVIEW_EVENTS } from 'src/utils/events/overview'
 import Track from 'src/components/Track'
 import Notifications from 'src/components/AppLayout/Header/components/Notifications'
+import SafeLogo from '../assets/gnosis-safe-multisig-logo.svg'
 
 const styles = () => ({
   root: {
@@ -41,16 +41,23 @@ const styles = () => ({
     zIndex: 1301,
   },
   logo: {
-    flexBasis: '140px',
-    flexShrink: '0',
-    flexGrow: '0',
-    maxWidth: '55px',
-    padding: sm,
-    marginTop: '4px',
     [`@media (min-width: ${screenSm}px)`]: {
       maxWidth: 'none',
       paddingLeft: md,
       paddingRight: md,
+    },
+    [`@media (max-width: ${screenSm}px)`]: {
+      maxWidth: '95px',
+      overflow: 'hidden',
+      '& img': {
+        width: '72px',
+        height: 'auto',
+      },
+    },
+    '& a': {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
     },
   },
   wallet: {
