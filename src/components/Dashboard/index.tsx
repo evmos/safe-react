@@ -7,6 +7,7 @@ import SafeApps from './SafeApps'
 //import { FeaturedApps } from './FeaturedApps/FeaturedApps'
 //import MobileAppBanner from './MobileAppBanner'
 import { DashboardTitle } from './styled'
+//import RebrandingBanner from './RebrandingBanner'
 
 const Dashboard = (): ReactElement => {
   return (
