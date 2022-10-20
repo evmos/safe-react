@@ -80,7 +80,7 @@ const PairingDetails = ({ vertical = false }: PairingDetailsProps): ReactElement
         <QRCode
           value={uri}
           includeMargin
-          imageSettings={{ src: '/assets/apple-touch-icon-120x120.png', width: 30, height: 30 }}
+          imageSettings={{ src: './resources/logo-white-bg.png', width: 30, height: 30 }}
         />
       ) : isPairingLoaded ? (
         <Skeleton variant="rect" width={QR_DIMENSION} height={QR_DIMENSION} />

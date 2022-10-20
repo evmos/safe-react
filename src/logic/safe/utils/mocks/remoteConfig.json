@@ -3,188 +3,119 @@
   "previous": null,
   "results": [
     {
-      "transactionService": "https://safe-transaction.mainnet.staging.gnosisdev.com",
-      "chainId": "1",
-      "chainName": "Ethereum",
-      "shortName": "eth",
-      "l2": false,
+      "transactionService": "https://transaction.safe.evmos.dev",
+      "chainId": "9001",
+      "chainName": "Evmos",
+      "shortName": "evmos",
+      "l2": true,
       "description": "",
       "rpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://mainnet.infura.io/v3/"
+        "authentication": "NO_AUTHENTICATION",
+        "value": "https://tharsis-evmos-gnosis-safe.bdnodes.net:8545?auth=zYwD1Rbe_TDd1rb7pac-Cm_Ixyr7gMMKSYsDfIUdOGc"
       },
       "safeAppsRpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://mainnet.infura.io/v3/"
-      },
-      "publicRpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://mainnet.infura.io/v3/"
-      },
-      "blockExplorerUriTemplate": {
-        "address": "https://etherscan.io/address/{{address}}",
-        "txHash": "https://etherscan.io/tx/{{txHash}}",
-        "api": "https://api.etherscan.io/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}"
-      },
-      "nativeCurrency": {
-        "name": "Ether",
-        "symbol": "ETH",
-        "decimals": 18,
-        "logoUri": "https://safe-transaction-assets.staging.gnosisdev.com/chains/1/currency_logo.png"
-      },
-      "theme": {
-        "textColor": "#001428",
-        "backgroundColor": "#DDDDDD"
-      },
-      "ensRegistryAddress": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-      "gasPrice": [
-        {
-          "type": "ORACLE",
-          "uri": "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=JNFAU892RF9TJWBU3EV7DJCPIWZY8KEMY1",
-          "gasParameter": "FastGasPrice",
-          "gweiFactor": "1000000000.000000000"
-        },
-        {
-          "type": "ORACLE",
-          "uri": "https://ethgasstation.info/json/ethgasAPI.json?api-key=8bb8066b5c3ed1442190d0e30ad9126c7b8235314397efa76e6977791cb2",
-          "gasParameter": "fast",
-          "gweiFactor": "100000000.000000000"
-        }
-      ],
-      "disabledWallets": [
-        "lattice",
-        "safeMobile"
-      ],
-      "features": [
-        "CONTRACT_INTERACTION",
-        "DOMAIN_LOOKUP",
-        "EIP1559",
-        "ERC721",
-        "SAFE_APPS",
-        "SAFE_TX_GAS_OPTIONAL",
-        "SPENDING_LIMIT"
-      ]
-    },
-    {
-      "transactionService": "https://safe-transaction-polygon.staging.gnosisdev.com",
-      "chainId": "137",
-      "chainName": "Polygon",
-      "shortName": "matic",
-      "l2": true,
-      "description": "Test",
-      "rpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://polygon-mainnet.infura.io/v3/"
-      },
-      "safeAppsRpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://polygon-mainnet.infura.io/v3/"
+        "authentication": "NO_AUTHENTICATION",
+        "value": "https://tharsis-evmos-gnosis-safe.bdnodes.net:8545?auth=zYwD1Rbe_TDd1rb7pac-Cm_Ixyr7gMMKSYsDfIUdOGc"
       },
       "publicRpcUri": {
         "authentication": "NO_AUTHENTICATION",
-        "value": "https://polygon-rpc.com/"
+        "value": "https://tharsis-evmos-gnosis-safe.bdnodes.net:8545?auth=zYwD1Rbe_TDd1rb7pac-Cm_Ixyr7gMMKSYsDfIUdOGc"
       },
       "blockExplorerUriTemplate": {
-        "address": "https://polygonscan.com/address/{{address}}",
-        "txHash": "https://polygonscan.com/tx/{{txHash}}",
-        "api": "https://api.polygonscan.com/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}"
+        "address": "https://evm.evmos.org/address/{{address}}",
+        "txHash": "https://evm.evmos.org/tx/{{txHash}}",
+        "api": "https://evm.evmos.org/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}"
       },
       "nativeCurrency": {
-        "name": "Matic",
-        "symbol": "MATIC",
+        "name": "Evmos",
+        "symbol": "EVMOS",
         "decimals": 18,
-        "logoUri": "https://safe-transaction-assets.staging.gnosisdev.com/chains/137/currency_logo.png"
+        "logoUri": "https://safe-evmos-static-assets-staging.s3.amazonaws.com/chains/9001/currency_logo.png"
       },
       "theme": {
         "textColor": "#ffffff",
-        "backgroundColor": "#8248E5"
+        "backgroundColor": "#000000"
       },
-      "gasPrice": [
-        {
-          "type": "ORACLE",
-          "uri": "https://gasstation-mainnet.matic.network",
-          "gasParameter": "standard",
-          "gweiFactor": "1000000000.000000000"
-        }
-      ],
+      "gasPrice": [],
       "disabledWallets": [
         "authereum",
         "coinbase",
         "fortmatic",
         "keystone",
         "lattice",
+        "ledger",
         "opera",
         "operaTouch",
         "portis",
+        "safeMobile",
+        "tally",
         "torus",
-        "trust",
-        "walletLink",
-        "safeMobile"
+        "trezor",
+        "walletLink"
       ],
       "features": [
         "CONTRACT_INTERACTION",
-        "EIP1559",
         "ERC721",
         "SAFE_APPS",
         "SAFE_TX_GAS_OPTIONAL"
       ]
     },
     {
-      "transactionService": "https://safe-transaction.rinkeby.staging.gnosisdev.com",
-      "chainId": "4",
-      "chainName": "Rinkeby",
-      "shortName": "rin",
-      "l2": false,
+      "transactionService": "https://transaction-testnet.safe.evmos.dev",
+      "chainId": "9000",
+      "chainName": "Evmos Testnet",
+      "shortName": "evmos-testnet",
+      "l2": true,
       "description": "",
       "rpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://rinkeby.infura.io/v3/"
+        "authentication": "NO_AUTHENTICATION",
+        "value": "https://eth.bd.evmos.dev:8545"
       },
       "safeAppsRpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://rinkeby.infura.io/v3/"
+        "authentication": "NO_AUTHENTICATION",
+        "value": "https://eth.bd.evmos.dev:8545"
       },
       "publicRpcUri": {
-        "authentication": "API_KEY_PATH",
-        "value": "https://rinkeby.infura.io/v3/"
+        "authentication": "NO_AUTHENTICATION",
+        "value": "https://eth.bd.evmos.dev:8545"
       },
       "blockExplorerUriTemplate": {
-        "address": "https://rinkeby.etherscan.io/address/{{address}}",
-        "txHash": "https://rinkeby.etherscan.io/tx/{{txHash}}",
-        "api": "https://api-rinkeby.etherscan.io/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}"
+        "address": "https://evm.evmos.dev/address/{{address}}",
+        "txHash": "https://evm.evmos.dev/tx/{{txHash}}",
+        "api": "https://evm.evmos.dev/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}"
       },
       "nativeCurrency": {
-        "name": "Ether",
-        "symbol": "ETH",
+        "name": "test-Evmos",
+        "symbol": "tEVMOS",
         "decimals": 18,
-        "logoUri": "https://safe-transaction-assets.staging.gnosisdev.com/chains/4/currency_logo.png"
+        "logoUri": "https://safe-evmos-static-assets-staging.s3.amazonaws.com/chains/9000/currency_logo.png"
       },
       "theme": {
         "textColor": "#ffffff",
-        "backgroundColor": "#E8673C"
+        "backgroundColor": "#000000"
       },
-      "ensRegistryAddress": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-      "gasPrice": [
-        {
-          "type": "ORACLE",
-          "uri": "https://api-rinkeby.etherscan.io/api?module=gastracker&action=gasoracle&apikey=JNFAU892RF9TJWBU3EV7DJCPIWZY8KEMY1",
-          "gasParameter": "FastGasPrice",
-          "gweiFactor": "1000000000.000000000"
-        }
-      ],
+      "gasPrice": [],
       "disabledWallets": [
+        "authereum",
+        "coinbase",
         "fortmatic",
+        "keystone",
         "lattice",
-        "safeMobile"
+        "ledger",
+        "opera",
+        "operaTouch",
+        "portis",
+        "safeMobile",
+        "tally",
+        "torus",
+        "trezor",
+        "walletLink"
       ],
       "features": [
         "CONTRACT_INTERACTION",
-        "DOMAIN_LOOKUP",
-        "EIP1559",
         "ERC721",
         "SAFE_APPS",
-        "SAFE_TX_GAS_OPTIONAL",
-        "SPENDING_LIMIT"
+        "SAFE_TX_GAS_OPTIONAL"
       ]
     }
   ]
