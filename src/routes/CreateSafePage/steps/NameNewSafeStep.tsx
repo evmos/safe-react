@@ -4,7 +4,7 @@ import { useForm } from 'react-final-form'
 import styled from 'styled-components'
 
 import Block from 'src/components/layout/Block'
-import { lg, secondary } from 'src/theme/variables'
+import { lg } from 'src/theme/variables'
 import Col from 'src/components/layout/Col'
 import Paragraph from 'src/components/layout/Paragraph'
 import Field from 'src/components/forms/Field'
@@ -88,9 +88,9 @@ function NameNewSafeStep(): ReactElement {
     <BlockWithPadding data-testid={'create-safe-name-step'}>
       <Block margin="md">
         <Paragraph color="primary" noMargin size="lg">
-          You are about to create a new Safe wallet with one or more owners. First, let&apos;s give your new wallet a
-          name. This name is only stored locally and will never be shared with us or any third parties. The new Safe
-          will ONLY be available on <NetworkLabel />
+          You are about to create a new Evmos Safe wallet with one or more owners. First, let&apos;s give your new
+          wallet a name. This name is only stored locally and will never be shared with Evmos or any third parties. The
+          new Safe will ONLY be available on <NetworkLabel />
         </Paragraph>
       </Block>
       <label htmlFor={FIELD_CREATE_CUSTOM_SAFE_NAME}>Name of the new Safe</label>
@@ -106,19 +106,6 @@ function NameNewSafeStep(): ReactElement {
           />
         </Col>
       </FieldContainer>
-      <Block margin="lg">
-        <Paragraph color="primary" noMargin size="lg">
-          By continuing you consent to the{' '}
-          <Link href="https://gnosis-safe.io/terms" rel="noopener noreferrer" target="_blank">
-            terms of use
-          </Link>
-          {' and '}
-          <Link href="https://gnosis-safe.io/privacy" rel="noopener noreferrer" target="_blank">
-            privacy policy
-          </Link>
-          .
-        </Paragraph>
-      </Block>
     </BlockWithPadding>
   )
 }
@@ -133,8 +120,4 @@ const FieldContainer = styled(Block)`
   display: flex;
   max-width: 480px;
   margin-top: 12px;
-`
-
-const Link = styled.a`
-  color: ${secondary};
 `

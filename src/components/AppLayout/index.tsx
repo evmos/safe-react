@@ -7,7 +7,7 @@ import { ListItemType } from 'src/components/List'
 import Header from './Header'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
-import { MobileNotSupported } from './MobileNotSupported'
+//import { MobileNotSupported } from './MobileNotSupported'
 import { SAFE_APP_LANDING_PAGE_ROUTE, SAFE_ROUTES, WELCOME_ROUTE } from 'src/routes/routes'
 import useDarkMode from 'src/logic/hooks/useDarkMode'
 import { screenSm } from 'src/theme/variables'
@@ -128,12 +128,10 @@ const Layout: React.FC<Props> = ({
   children,
   sidebarItems,
 }): React.ReactElement => {
-  const [mobileNotSupportedClosed, setMobileNotSupportedClosed] = useState(false)
+  //const [mobileNotSupportedClosed, setMobileNotSupportedClosed] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const { pathname } = useLocation()
   useDarkMode()
-
-  const closeMobileNotSupported = () => setMobileNotSupportedClosed(true)
 
   const hasFooter = !!matchPath(pathname, {
     path: [SAFE_ROUTES.SETTINGS, WELCOME_ROUTE],
@@ -176,8 +174,6 @@ const Layout: React.FC<Props> = ({
           {hasFooter && <Footer />}
         </ContentWrapper>
       </BodyWrapper>
-
-      {!mobileNotSupportedClosed && <MobileNotSupported onClose={closeMobileNotSupported} />}
     </Container>
   )
 }

@@ -11,6 +11,23 @@ index df8c3c3..de97415 100644
    });
    wallet = writable({
      name: null,
+diff --git a/node_modules/bnc-onboard/dist/cjs/portis-ba01d985.js b/node_modules/bnc-onboard/dist/cjs/portis-ba01d985.js
+index 2b46796..257afdb 100644
+--- a/node_modules/bnc-onboard/dist/cjs/portis-ba01d985.js
++++ b/node_modules/bnc-onboard/dist/cjs/portis-ba01d985.js
+@@ -66,7 +66,11 @@ function portis(options) {
+               case 2:
+                 _yield$Promise = _context.sent;
+                 Portis = _yield$Promise["default"];
+-                instance = new Portis(apiKey, onboard.networkName(networkId));
++                //instance = new Portis(apiKey, onboard.networkName(networkId));
++                instance = new Portis(apiKey, {
++                  nodeUrl: 'https://eth.bd.evmos.org:8545',
++                  chainId: 9001,
++                })
+                 provider = instance.provider;
+                 BigNumber = helpers.BigNumber;
+                 return _context.abrupt("return", {
 diff --git a/node_modules/bnc-onboard/dist/esm/onboard-59ef9a1c.js b/node_modules/bnc-onboard/dist/esm/onboard-59ef9a1c.js
 index 92a3dc6..3c877f2 100644
 --- a/node_modules/bnc-onboard/dist/esm/onboard-59ef9a1c.js
@@ -24,3 +41,20 @@ index 92a3dc6..3c877f2 100644
    });
    wallet = writable({
      name: null,
+diff --git a/node_modules/bnc-onboard/dist/esm/portis-851d5afd.js b/node_modules/bnc-onboard/dist/esm/portis-851d5afd.js
+index 69525eb..3d1a420 100644
+--- a/node_modules/bnc-onboard/dist/esm/portis-851d5afd.js
++++ b/node_modules/bnc-onboard/dist/esm/portis-851d5afd.js
+@@ -34,7 +34,11 @@ function portis(options) {
+               case 2:
+                 _yield$import = _context.sent;
+                 Portis = _yield$import["default"];
+-                instance = new Portis(apiKey, networkName(networkId));
++                // instance = new Portis(apiKey, networkName(networkId));
++                instance = new Portis(apiKey, {
++                  nodeUrl: 'https://eth.bd.evmos.org:8545',
++                  chainId: 9001,
++                })
+                 provider = instance.provider;
+                 BigNumber = helpers.BigNumber;
+                 return _context.abrupt("return", {

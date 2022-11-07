@@ -4,28 +4,27 @@ import { Grid } from '@material-ui/core'
 import PendingTxsList from './PendingTxs/PendingTxsList'
 import Overview from './Overview/Overview'
 import SafeApps from './SafeApps'
-import { FeaturedApps } from './FeaturedApps/FeaturedApps'
+//import { FeaturedApps } from './FeaturedApps/FeaturedApps'
+//import MobileAppBanner from './MobileAppBanner'
 import { DashboardTitle } from './styled'
-import RebrandingBanner from './RebrandingBanner'
+//import RebrandingBanner from './RebrandingBanner'
 
 const Dashboard = (): ReactElement => {
   return (
     <Grid container spacing={3}>
       <DashboardTitle>Dashboard</DashboardTitle>
 
-      <Grid item xs={12} md={12} lg={6}>
+      <Grid item xs={12} md={12} lg={12}>
         <Overview />
       </Grid>
 
-      <Grid item xs={12} md={12} lg={6}>
-        <RebrandingBanner />
-      </Grid>
+      {/* <MobileAppBanner /> */}
 
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={12}>
         <PendingTxsList size={4} />
       </Grid>
 
-      <FeaturedApps />
+      {/* <FeaturedApps /> */}
 
       <Grid item xs={12}>
         <SafeApps />

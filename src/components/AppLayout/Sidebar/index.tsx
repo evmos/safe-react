@@ -1,19 +1,18 @@
 import { lazy, useMemo } from 'react'
 import styled from 'styled-components'
 import { Divider } from '@gnosis.pm/safe-react-components'
-import { useDispatch } from 'react-redux'
 
-import List, { ListItemType, StyledListItem, StyledListItemText } from 'src/components/List'
+import List, { ListItemType } from 'src/components/List'
 import SafeHeader from './SafeHeader'
-import { IS_PRODUCTION, BEAMER_ID } from 'src/utils/constants'
+import { IS_PRODUCTION } from 'src/utils/constants'
 import { wrapInSuspense } from 'src/utils/wrapInSuspense'
-import Track from 'src/components/Track'
-import { OVERVIEW_EVENTS } from 'src/utils/events/overview'
-import ListIcon from 'src/components/List/ListIcon'
-import { openCookieBanner } from 'src/logic/cookies/store/actions/openCookieBanner'
-import { loadFromCookie } from 'src/logic/cookies/utils'
-import { COOKIES_KEY, BannerCookiesType, COOKIE_IDS } from 'src/logic/cookies/model/cookie'
-import { background, primaryLite } from 'src/theme/variables'
+//import Track from 'src/components/Track'
+//import { OVERVIEW_EVENTS } from 'src/utils/events/overview'
+//import ListIcon from 'src/components/List/ListIcon'
+//import { openCookieBanner } from 'src/logic/cookies/store/actions/openCookieBanner'
+//import { loadFromCookie } from 'src/logic/cookies/utils'
+//import { COOKIES_KEY, BannerCookiesType, COOKIE_IDS } from 'src/logic/cookies/model/cookie'
+import { background } from 'src/theme/variables'
 
 const StyledDivider = styled(Divider)`
   margin: 16px -8px 0;
@@ -24,7 +23,7 @@ const HelpContainer = styled.div`
   margin-top: auto;
 `
 
-const HelpList = styled.div`
+/* const HelpList = styled.div`
   margin: 24px 0;
   padding: 0 12px;
 `
@@ -54,7 +53,7 @@ const HelpCenterLink = styled.a`
     text-transform: uppercase;
     padding: 0 0 0 4px;
   }
-`
+` */
 type Props = {
   safeAddress?: string
   safeName?: string
@@ -73,8 +72,6 @@ const lazyLoad = (path: string): React.ReactElement => {
   return wrapInSuspense(<Component />)
 }
 
-const isDesktop = process.env.REACT_APP_BUILD_FOR_DESKTOP
-
 const Sidebar = ({
   items,
   balance,
@@ -86,23 +83,6 @@ const Sidebar = ({
   onNewTransactionClick,
 }: Props): React.ReactElement => {
   const debugToggle = useMemo(() => (IS_PRODUCTION ? null : lazyLoad('./DebugToggle')), [])
-  const dispatch = useDispatch()
-
-  const handleClick = (): void => {
-    const cookiesState = loadFromCookie<BannerCookiesType>(COOKIES_KEY)
-    if (!cookiesState) {
-      dispatch(openCookieBanner({ cookieBannerOpen: true }))
-      return
-    }
-    if (!cookiesState.acceptedSupportAndUpdates) {
-      dispatch(
-        openCookieBanner({
-          cookieBannerOpen: true,
-          key: COOKIE_IDS.BEAMER,
-        }),
-      )
-    }
-  }
 
   return (
     <>
@@ -128,7 +108,7 @@ const Sidebar = ({
 
         <StyledDivider />
 
-        <HelpList>
+        {/* <HelpList>
           {!isDesktop && BEAMER_ID && (
             <Track {...OVERVIEW_EVENTS.WHATS_NEW}>
               <StyledListItem className="beamer-trigger" button onClick={handleClick}>
@@ -139,12 +119,12 @@ const Sidebar = ({
           )}
 
           <Track {...OVERVIEW_EVENTS.HELP_CENTER}>
-            <HelpCenterLink href="https://help.gnosis-safe.io/en/" target="_blank" title="Help Center of Gnosis Safe">
+            <HelpCenterLink href="https://help.gnosis-safe.io/en/" target="_blank" title="Help Center of Evmos Safe">
               <ListIcon type="question" color="secondary" size="sm" />
               <StyledListItemText>Help Center</StyledListItemText>
             </HelpCenterLink>
           </Track>
-        </HelpList>
+        </HelpList> */}
       </HelpContainer>
     </>
   )

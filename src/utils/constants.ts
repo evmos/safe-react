@@ -4,14 +4,13 @@ export const APP_ENV = process.env.REACT_APP_ENV
 export const NODE_ENV = process.env.NODE_ENV
 export const IS_PRODUCTION = APP_ENV === 'production'
 export const DEFAULT_CHAIN_ID =
-  process.env.REACT_APP_DEFAULT_CHAIN_ID ||
-  (IS_PRODUCTION ? CHAIN_ID.ETHEREUM : NODE_ENV === 'test' ? CHAIN_ID.RINKEBY : CHAIN_ID.GOERLI)
+  process.env.REACT_APP_DEFAULT_CHAIN_ID || (IS_PRODUCTION ? CHAIN_ID.EVMOS_MAINNET : CHAIN_ID.EVMOS_MAINNET)
 export const PUBLIC_URL = process.env.PUBLIC_URL
 export const TX_SERVICE_VERSION = '1'
 export const INTERCOM_ID = IS_PRODUCTION ? process.env.REACT_APP_INTERCOM_ID : 'plssl1fl'
 export const BEAMER_ID = IS_PRODUCTION ? process.env.REACT_APP_BEAMER_ID : 'ehlRMhQi41258'
 export const SENTRY_DSN = process.env.REACT_APP_SENTRY_DSN || ''
-export const PORTIS_ID = process.env.REACT_APP_PORTIS_ID ?? '852b763d-f28b-4463-80cb-846d7ec5806b'
+export const PORTIS_ID = process.env.REACT_APP_PORTIS_ID ?? 'dc454e7b-0131-419c-b220-c60cd8116a0b'
 export const FORTMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY ?? 'pk_test_CAD437AA29BE0A40'
 export const INFURA_TOKEN = process.env.REACT_APP_INFURA_TOKEN || ''
 export const SAFE_APPS_RPC_TOKEN = process.env.REACT_APP_SAFE_APPS_RPC_INFURA_TOKEN || ''
@@ -57,7 +56,7 @@ export const isProdGateway = (): boolean => {
 
 export const GATEWAY_URL =
   process.env.REACT_APP_GATEWAY_URL ||
-  (IS_PRODUCTION || isProdGateway() ? 'https://safe-client.safe.global' : 'https://safe-client.staging.5afe.dev')
+  (IS_PRODUCTION || isProdGateway() ? 'https://gateway.safe.evmos.org' : 'https://gateway.safe.evmos.dev')
 
 // Safe Token
 export const SAFE_TOKEN_ADDRESSES: { [chainId: string]: string } = {
