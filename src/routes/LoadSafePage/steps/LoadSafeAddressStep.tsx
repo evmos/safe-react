@@ -146,8 +146,8 @@ function LoadSafeAddressStep(): ReactElement {
     <Container data-testid={'load-safe-address-step'}>
       <Block margin="md">
         <Paragraph color="primary" noMargin size="lg">
-          You are about to add an existing Safe on <NetworkLabel />. First, choose a name and enter the Safe address.
-          The name is only stored locally and will never be shared with us or any third parties.
+          You are about to add an existing Evmos Safe on <NetworkLabel />. First, choose a name and enter the Safe
+          address. The name is only stored locally and will never be shared with Evmos or any third parties.
         </Paragraph>
         <Paragraph color="primary" size="lg">
           Your connected wallet does not have to be the owner of this Safe. In this case, the interface will provide you
@@ -203,19 +203,6 @@ function LoadSafeAddressStep(): ReactElement {
           <ScanQRWrapper handleScan={handleScan} />
         </Col>
       </FieldContainer>
-      <Block margin="sm">
-        <Paragraph color="primary" noMargin size="lg">
-          By continuing you consent to the{' '}
-          <StyledLink href="https://gnosis-safe.io/terms" rel="noopener noreferrer" target="_blank">
-            terms of use
-          </StyledLink>
-          {' and '}
-          <StyledLink href="https://gnosis-safe.io/privacy" rel="noopener noreferrer" target="_blank">
-            privacy policy
-          </StyledLink>
-          .
-        </Paragraph>
-      </Block>
     </Container>
   )
 }

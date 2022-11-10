@@ -15,7 +15,6 @@ import { lg, md, background } from 'src/theme/variables'
 import { Modal } from 'src/components/Modal'
 import Img from 'src/components/layout/Img'
 import Row from 'src/components/layout/Row'
-import HelpInfo from 'src/routes/safe/components/AddressBook/HelpInfo'
 
 import SuccessSvg from './assets/success.svg'
 import ErrorSvg from './assets/error.svg'
@@ -107,9 +106,7 @@ export const ExportEntriesModal = ({ isOpen, onClose }: ExportEntriesModalProps)
                 You&apos;re about to export a CSV file with{' '}
                 <Text size="xl" strong as="span">
                   {addressBook.length} address book entries. <br />
-                  <HelpInfo />
                 </Text>
-                .
               </Text>
             ) : (
               <Text size="xl" as="span">

@@ -8,9 +8,11 @@ import Provider from './Provider'
 import NetworkSelector from './NetworkSelector'
 import Spacer from 'src/components/Spacer'
 import Col from 'src/components/layout/Col'
+import Img from 'src/components/layout/Img'
 import Row from 'src/components/layout/Row'
 import { headerHeight, md, screenSm, sm } from 'src/theme/variables'
 import { useStateHandler } from 'src/logic/hooks/useStateHandler'
+import SafeLogo from '../assets/logo-w-text.svg'
 import { ROOT_ROUTE } from 'src/routes/routes'
 import WalletSwitch from 'src/components/WalletSwitch'
 import Divider from 'src/components/layout/Divider'
@@ -42,23 +44,16 @@ const styles = () => ({
     zIndex: 1301,
   },
   logo: {
+    flexBasis: '140px',
+    flexShrink: '0',
+    flexGrow: '0',
+    maxWidth: '55px',
+    padding: sm,
+    marginTop: '4px',
     [`@media (min-width: ${screenSm}px)`]: {
       maxWidth: 'none',
       paddingLeft: md,
       paddingRight: md,
-    },
-    [`@media (max-width: ${screenSm}px)`]: {
-      maxWidth: '95px',
-      overflow: 'hidden',
-      '& img': {
-        width: '72px',
-        height: 'auto',
-      },
-    },
-    '& a': {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
     },
   },
   wallet: {
@@ -111,7 +106,7 @@ const Layout = ({ classes, providerDetails, providerInfo }) => {
       <Col className={classes.logo} middle="xs" start="xs">
         <Track {...OVERVIEW_EVENTS.HOME}>
           <Link to={ROOT_ROUTE}>
-            <AnimatedLogo />
+            <Img alt="Evmos Safe" height={36} src={SafeLogo} testId="heading-gnosis-logo" id="safe-logo" />
           </Link>
         </Track>
       </Col>
