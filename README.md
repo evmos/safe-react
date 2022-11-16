@@ -1,7 +1,4 @@
-# ‼️ This repository is in maintenance mode and will be eventually archived.
-# Please use [safe-global/web-core](https://github.com/safe-global/web-core)
-
-# Legacy Safe web UI
+# Safe web UI
 
 ![license](https://img.shields.io/github/license/gnosis/safe-react)
 ![build](https://img.shields.io/github/workflow/status/gnosis/safe-react/Deploy%20to%20Mainnet%20network/main)
